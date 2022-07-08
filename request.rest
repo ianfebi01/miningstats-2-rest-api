@@ -1,0 +1,119 @@
+GET http://localhost:419/income
+
+### get income by id
+GET http://localhost:419/income/62a32a8c6ba7bc5b2963df86
+
+###
+POST http://localhost:419/income
+Content-Type: application/json
+
+{
+    "id": "62a326336ba7bc5b2963df81",
+    "value": 0.05,
+    "fee": 0.0003,
+    "date": "2022-05-15"
+}
+
+###
+PATCH http://localhost:419/income/62a32a8c6ba7bc5b2963df86
+Content-Type: application/json
+
+{
+    "id": "62a326336ba7bc5b2963df81",
+    "value": 0.06,
+    "fee": 0.0003,
+    "date": "2022-05-15"
+}
+
+
+###
+DELETE http://localhost:419/income/62a37cf878c94bf1faac462c
+
+###
+GET http://localhost:419/income/id/62a326336ba7bc5b2963df81
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmFmMzIyODc0NGQ1ZTk0M2I0ZDFiMDYiLCJuYW1lIjoidGVzdCIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJpYXQiOjE2NTYyNjk3MDQsImV4cCI6MTY1NjI2OTcyNH0.lU8NePRvfJADPuIopKQ4YegLaavm-bN05LlkAV-F1_M
+
+###
+GET http://localhost:419/income/month/62a326336ba7bc5b2963df81
+
+
+
+
+
+
+
+
+###
+GET http://localhost:419/cost
+
+### get income by id
+GET http://localhost:419/cost/62a466358c0c810ee4fbb0ee
+
+###
+POST http://localhost:419/cost/
+Content-Type: application/json
+
+{
+    "id": "62a466358c0c810ee4fbb0ee",
+    "price": 200000,
+    "detail": "Listrik",
+    "date": "2022-05-15"
+}
+
+###
+PATCH http://localhost:419/cost/62a466358c0c810ee4fbb0ee
+Content-Type: application/json
+
+{
+    "id": "62a326336ba7bc5b2963df81",
+    "price": 5500,
+    "detail": "Kabel Data",
+    "date": "2022-05-15"
+}
+
+
+###
+DELETE http://localhost:419/cost/62a466358c0c810ee4fbb0ee
+
+###
+GET http://localhost:419/cost/id/62a326336ba7bc5b2963df81
+
+###
+GET http://localhost:419/cost/month/62a326336ba7bc5b2963df81
+
+
+
+
+
+
+
+
+###
+GET http://localhost:419/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmFmMzE1Zjc0NGQ1ZTk0M2I0ZDFiMDEiLCJuYW1lIjoidGVzdDIiLCJlbWFpbCI6InRlc3QyQGdtYWlsLmNvbSIsImlhdCI6MTY1NTY0ODYxNiwiZXhwIjoxNjU1NjQ4NjM2fQ.4d99fL39IaFVtDqrJ34XQyNOhR2CxI_xp7MyfCu5MTs
+
+###
+POST http://localhost:419/user/register
+Content-Type: application/json
+
+{
+    "name": "test2",
+    "email": "test2@gmail.com",
+    "password": "jenengmu",
+    "confPassword": "jenengmu"
+}
+
+###
+POST http://localhost:419/user/login
+Content-Type: application/json
+
+{
+    "email": "test@gmail.com",
+    "password": "jenengmu"
+}
+
+###
+GET http://localhost:419/user/token
+
+###
+DELETE  http://localhost:419/user/logout
