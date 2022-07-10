@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const Cost = mongoose.Schema({
-  id: {
+  userId: {
     type: String,
     required: true,
     index: true,
@@ -20,4 +20,4 @@ const Cost = mongoose.Schema({
   },
 });
 
-export default mongoose.model('cost', Cost);
+export default mongoose.model("cost", Cost);
