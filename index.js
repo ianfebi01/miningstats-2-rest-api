@@ -1,30 +1,37 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import incomeRouter from './routes/incomeRouter.js';
-import costRouter from './routes/costRouter.js';
-import userRouter from './routes/userRouter.js';
-import dotenv from 'dotenv';
-import cookieParser from 'cookie-parser';
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import incomeRouter from "./routes/incomeRouter.js";
+import costRouter from "./routes/costRouter.js";
+import userRouter from "./routes/userRouter.js";
+import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+import dataRouter from "./routes/dataRouter.js";
 
 dotenv.config();
 
 const { connection } = mongoose;
 
 const app = express();
-const port = 419;
+const port = process.env.PORT || 8000;
 
-mongoose.connect('mongodb://localhost:27017/miningstats');
+mongoose
+  .connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+  })
+  .then(() => console.log("Connected to database"))
+  .catch((err) => console.log("Connection error : " + err.message));
 
-const db = mongoose.connection;
-db.on('error', () => console.error(error));
-db.once('open', () => console.log('Connected'));
+// const db = mongoose.connection;
+// db.on("error", () => console.error(error));
+// db.once("open", () => console.log("Connected"));
 
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(cookieParser());
 app.use(express.json());
-app.use('/income', incomeRouter);
-app.use('/cost', costRouter);
-app.use('/user', userRouter);
+app.use("/income", incomeRouter);
+app.use("/cost", costRouter);
+app.use("/user", userRouter);
+app.use("/", dataRouter);
 
-app.listen(port, () => console.log('App running on port : ', port));
+app.listen(port, () => console.log("App running on port : ", port));
