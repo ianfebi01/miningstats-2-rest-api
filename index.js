@@ -26,7 +26,7 @@ mongoose
 // db.on("error", () => console.error(error));
 // db.once("open", () => console.log("Connected"));
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: process.env.FE_URL }));
 app.use(cookieParser());
 app.use(express.json());
 app.use("/income", incomeRouter);
